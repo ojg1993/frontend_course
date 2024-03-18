@@ -1,7 +1,16 @@
 // const Button = (props) => {
 const Button = ({ text, color, children }) => {
+  const onClickBtn = (e) => {
+    console.log(e);
+    console.log(text);
+  };
+
   return (
-    <button style={{ color: color }}>
+    <button
+      onClick={onClickBtn}
+      // onMouseEnter={onClickBtn}
+      style={{ color: color }}
+    >
       {text} - {color.toUpperCase()}
       {children}
     </button>
