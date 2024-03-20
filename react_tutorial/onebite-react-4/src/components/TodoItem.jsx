@@ -20,11 +20,4 @@ const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
   );
 };
 
-export default memo(TodoItem, (prevProps, nextProbs) => {
-  if (prevProps.id !== nextProbs.id) return false;
-  if (prevProps.isDone !== nextProbs.isDone) return false;
-  if (prevProps.content !== nextProbs.content) return false;
-  if (prevProps.date !== nextProbs.date) return false;
-
-  return true;
-});
+export default memo(TodoItem);
