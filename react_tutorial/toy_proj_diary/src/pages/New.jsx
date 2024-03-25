@@ -1,15 +1,31 @@
 import Header from "../components/Header";
-import Button from "../components/Button";
 import Editor from "../components/Editor";
+import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DiaryDispatchContext } from "../App";
 
 const New = () => {
+    const { memoizedDispatch } = useContext(DiaryDispatchContext);
+    const nav = useNavigate();
+
+    const onSubmit = (input) => {
+        memoizedDispatch.onCreate(
+            input.createdDate.getTime(),
+            input.emotionId,
+            input.content
+        );
+
+        nav("/", { replace: true });
+    };
+
     return (
         <div>
             <Header
                 title={"New Diary"}
-                leftChild={<Button text="< Go Back" />}
+                leftChild={<Button text="< Go Back" onClick={() => nav(-1)} />} // nav(-1) -> back
             />
-            <Editor />
+            <Editor onSubmit={onSubmit} />
         </div>
     );
 };

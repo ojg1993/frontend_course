@@ -1,6 +1,8 @@
 import "./Editor.css";
 import EmotionItem from "./EmotionItem";
 import Button from "./Button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const emotionList = [
     {
@@ -25,34 +27,96 @@ const emotionList = [
     },
 ];
 
-const Editor = () => {
-    const emotionId = 5;
+const getStringedDate = (targetDate) => {
+    // YYYY-MM-DD
+    let year = targetDate.getFullYear();
+    let month = targetDate.getMonth() + 1;
+    let date = targetDate.getDate();
+
+    if (month < 10) {
+        month = `0${month}`;
+    }
+    if (date < 10) {
+        date = `0${date}`;
+    }
+
+    return `${year}-${month}-${date}`;
+};
+
+const Editor = ({ onSubmit }) => {
+    const [input, setInput] = useState({
+        createdDate: new Date(),
+        emotionId: 3,
+        content: "",
+    });
+
+    const nav = useNavigate();
+
+    const onChangeInput = (e) => {
+        let name = e.target.name;
+        let val = e.target.value;
+
+        if (name === "createdDate") {
+            val = new Date(val);
+        }
+
+        setInput({
+            ...input,
+            [name]: val,
+        });
+    };
+
+    const onClickSubmitBtn = () => {
+        onSubmit(input);
+    };
 
     return (
         <div className="Editor">
             <section className="date_section">
                 <h4>Today's Date</h4>
-                <input type="date" />
+                <input
+                    name="createdDate"
+                    onChange={onChangeInput}
+                    value={getStringedDate(input.createdDate)}
+                    type="date"
+                />
             </section>
             <section className="emotion_section">
                 <h4>Today I am feeling</h4>
                 <div className="emotion_list_wrapper">
                     {emotionList.map((item) => (
                         <EmotionItem
+                            onClick={() =>
+                                onChangeInput({
+                                    target: {
+                                        name: "emotionId",
+                                        value: item.emotionId,
+                                    },
+                                })
+                            }
                             key={item.emotionId}
                             {...item}
-                            isSelected={item.emotionId === emotionId}
+                            isSelected={item.emotionId === input.emotionId}
                         />
                     ))}
                 </div>
             </section>
             <section className="content_section">
                 <h4>Today's Diary</h4>
-                <textarea placeholder="How was your day ?" />
+                <textarea
+                    name="content"
+                    value={input.value}
+                    onChange={onChangeInput}
+                    placeholder="How was your day ?"
+                />
             </section>
             <section className="btn_section">
-                <Button text={"Cancel"} />
-                <Button text={"Submit"} type={"POSITIVE"} />
+                <Button onClick={() => nav(-1)} text={"Cancel"} />
+                <Button
+                    onClick={onClickSubmitBtn}
+                    text={"Submit"}
+                    type={"POSITIVE"}
+                />
             </section>
         </div>
     );
