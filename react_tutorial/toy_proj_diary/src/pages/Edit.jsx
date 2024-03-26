@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { DiaryDispatchContext, DiaryStateContext } from "../App";
+import useDiary from "../hooks/useDiary";
 
 const Edit = () => {
   const params = useParams();
@@ -12,22 +13,9 @@ const Edit = () => {
 
   // Memoised object storing btn functions
   const { memoizedDispatch } = useContext(DiaryDispatchContext);
+
   // Diary object data
-  const data = useContext(DiaryStateContext);
-
-  const [curDiaryItem, setCurDiaryItem] = useState();
-  useEffect(() => {
-    const currentDiaryItem = data.find(
-      (item) => String(item.id) === String(params.id)
-    );
-
-    if (!currentDiaryItem) {
-      window.alert("Invalid diary ID");
-      nav("/", { replace: true });
-    }
-
-    setCurDiaryItem(currentDiaryItem);
-  }, [params.id, data]);
+  const curDiaryItem = useDiary(params.id);
 
   // Event Handler on clicking delete btn
   const onClickDelBtn = () => {
