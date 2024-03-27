@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Editor from "../components/Editor";
 import Button from "../components/Button";
+import usePageTitle from "../hooks/usePageTitle";
 
 import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -10,6 +11,7 @@ import useDiary from "../hooks/useDiary";
 const Edit = () => {
   const params = useParams();
   const nav = useNavigate();
+  usePageTitle("Edit Diary");
 
   // Memoised object storing btn functions
   const { memoizedDispatch } = useContext(DiaryDispatchContext);
