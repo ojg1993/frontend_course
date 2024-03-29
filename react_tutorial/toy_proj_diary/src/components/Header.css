@@ -14,7 +14,10 @@
 .Header .header_center {
   width: 50%;
   font-size: 25px;
-  justify-content: center; /* 자식들이 배치되는 위치 가운데로 */
+
+  /* display사 flex로 설정 된 요소 내
+   자식들이 배치되는 위치를 가운데로 설정*/
+  justify-content: center;
 }
 
 .Header .header_left {

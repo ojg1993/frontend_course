@@ -1,55 +1,60 @@
 .DiaryItem {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    padding: 15px 0px;
-    border-bottom: 1px solid rgb(236, 236, 236);
+  display: flex;
+  gap: 10px;
+
+  /* 자식요소간 최대거리 간격 */
+  justify-content: space-between;
+  padding: 15px 0px;
+  border-bottom: 1px solid rgb(236, 236, 236);
 }
 
 .DiaryItem .img_section {
-    min-width: 120px;
-    height: 80px;
+  min-width: 120px;
+  height: 80px;
 
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
+  /* 가운데 배치 */
+  display: flex;
+  justify-content: center;
 
-    border-radius: 10px;
+  cursor: pointer;
+  border-radius: 10px;
 }
+
 .DiaryItem .img_section > img {
-    width: 60%;
+  width: 60%;
 }
 
+/* 이미지 스타일 동적 할당 */
 .DiaryItem .img_section_1 {
-    background-color: rgb(100, 201, 100);
+  background-color: rgb(100, 201, 100);
 }
 .DiaryItem .img_section_2 {
-    background-color: rgb(157, 215, 114);
+  background-color: rgb(157, 215, 114);
 }
 .DiaryItem .img_section_3 {
-    background-color: rgb(253, 206, 23);
+  background-color: rgb(253, 206, 23);
 }
 .DiaryItem .img_section_4 {
-    background-color: rgb(253, 132, 70);
+  background-color: rgb(253, 132, 70);
 }
 .DiaryItem .img_section_5 {
-    background-color: rgb(253, 86, 95);
+  background-color: rgb(253, 86, 95);
 }
 
 .DiaryItem .info_section {
-    flex: 1;
-    cursor: pointer;
+  flex: 1; /* 최대 넓이 적용 */
+  cursor: pointer;
 }
 
 .DiaryItem .info_section .created_date {
-    font-weight: bold;
-    font-size: 25px;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .DiaryItem .info_section .content {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .DiaryItem .btn_section {
-    min-width: 70px;
+  min-width: 70px;
 }
