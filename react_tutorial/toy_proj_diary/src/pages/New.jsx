@@ -18,7 +18,7 @@ const New = () => {
       input.emotionId,
       input.content
     );
-
+    // submit 버튼 클릭 후 뒤로가기 방지 기능
     nav("/", { replace: true });
   };
 

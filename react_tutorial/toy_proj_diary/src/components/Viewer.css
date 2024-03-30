@@ -53,6 +53,7 @@
   background-color: rgb(236, 236, 236);
   border-radius: 10px;
 
+  /* word-break, overflow-wrap: 텍스트 박스 자연스러운 줄바꿈 */
   word-break: keep-all;
   overflow-wrap: break-word;
 }

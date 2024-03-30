@@ -24,10 +24,12 @@ const Editor = ({ initData, onSubmit }) => {
     }
   }, [initData]);
 
+  // State 관리 이벤트 핸들러
   const onChangeInput = (e) => {
     let name = e.target.name;
     let val = e.target.value;
 
+    // date 문자열 객체화
     if (name === "createdDate") {
       val = new Date(val);
     }
@@ -60,6 +62,8 @@ const Editor = ({ initData, onSubmit }) => {
             <EmotionItem
               onClick={() =>
                 onChangeInput({
+                  // 컴포넌트는 이벤트 객체가 자동전달 불가로
+                  // 별도의 객체를 생성하여 전달
                   target: {
                     name: "emotionId",
                     value: item.emotionId,

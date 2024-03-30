@@ -4,8 +4,8 @@ import Button from "../components/Button";
 import usePageTitle from "../hooks/usePageTitle";
 
 import { useParams, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { DiaryDispatchContext, DiaryStateContext } from "../App";
+import { useContext } from "react";
+import { DiaryDispatchContext } from "../App";
 import useDiary from "../hooks/useDiary";
 
 const Edit = () => {
@@ -31,7 +31,7 @@ const Edit = () => {
     if (window.confirm("Click confirm to edit the content")) {
       memoizedDispatch.onUpdate(
         params.id,
-        input.createdDate.getTime(),
+        input.createdDate.getTime(), // Timestamp로 전달 !
         input.emotionId,
         input.content
       );
