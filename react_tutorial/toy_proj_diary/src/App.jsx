@@ -59,36 +59,44 @@ function App() {
 
   //Delete
   //   localStorage.removeItem("test");
+
+  // 로딩 상태관리 기능
   const [isLoading, setIsLoding] = useState(true);
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
 
   useEffect(() => {
+    // 기존 데이터 없는 경우 즉시 리턴
     const storedData = localStorage.getItem("diary");
     if (!storedData) {
+      // 로딩상태 변경
       setIsLoding(false);
       return;
     }
+
+    // forEach 에러방지
     const parsedData = JSON.parse(storedData);
     if (!Array.isArray(parsedData)) {
+      // 로딩상태 변경
       setIsLoding(false);
       return;
     }
 
     let maxId = 0;
 
+    // maxId 설정
     parsedData.forEach((item) => {
       if (Number(item.id) > maxId) {
         maxId = Number(item.id);
       }
     });
-
     idRef.current = maxId + 1;
 
     dispatch({
       type: "INIT",
       data: parsedData,
     });
+    // 로딩상태 변경
     setIsLoding(false);
   }, []);
 
@@ -127,6 +135,7 @@ function App() {
     return { onCreate, onUpdate, onDelete };
   }, []);
 
+  // 로딩이 완료 될 경우에만 페이지 return문 진입
   if (isLoading) {
     return <div>Loading the data ...</div>;
   }

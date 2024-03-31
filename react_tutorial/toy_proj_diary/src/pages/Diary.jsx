@@ -12,7 +12,7 @@ const Diary = () => {
   const nav = useNavigate();
   const curDiaryItem = useDiary(params.id);
 
-  usePageTitle(`No.${params.id} Diary`);
+  usePageTitle(`No.${params.id} Diary`); // 페이지 타이틀 변경
 
   // useDiary의 데이터는 해당 페이지의 모든 컴포넌트가 렌더링 된 후,
   // hook 내 useEffect에 의해 반환됨으로, 초기 undefined를 핸들링 해야함

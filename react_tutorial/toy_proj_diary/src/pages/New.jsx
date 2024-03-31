@@ -10,7 +10,7 @@ import usePageTitle from "../hooks/usePageTitle";
 const New = () => {
   const { memoizedDispatch } = useContext(DiaryDispatchContext);
   const nav = useNavigate();
-  usePageTitle("New Diary");
+  usePageTitle("New Diary"); // 페이지 타이틀 변경
 
   const onSubmit = (input) => {
     memoizedDispatch.onCreate(

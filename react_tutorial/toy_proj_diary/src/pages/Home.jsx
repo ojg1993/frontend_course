@@ -34,7 +34,7 @@ const getMonthlyData = (pivotDate, data) => {
 const Home = () => {
   const data = useContext(DiaryStateContext);
   const [pivotDate, setPivotDate] = useState(new Date());
-  usePageTitle("Emotion Diary");
+  usePageTitle("Emotion Diary"); // 페이지 타이틀 변경
 
   // 월별 렌더링 데이터 필터링 데이터 할당
   const monthlyData = getMonthlyData(pivotDate, data);

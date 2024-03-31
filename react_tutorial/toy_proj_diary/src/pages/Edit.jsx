@@ -11,7 +11,7 @@ import useDiary from "../hooks/useDiary";
 const Edit = () => {
   const params = useParams();
   const nav = useNavigate();
-  usePageTitle("Edit Diary");
+  usePageTitle("Edit Diary"); // 페이지 타이틀 변경
 
   // Memoised object storing btn functions
   const { memoizedDispatch } = useContext(DiaryDispatchContext);
