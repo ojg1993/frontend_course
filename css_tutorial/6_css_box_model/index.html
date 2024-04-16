@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Box Model</title>
+    <style>
+      /* Write your CSS code here */
+      div {
+        width: 200px;
+        height: 200px;
+      }
+      #b1 {
+        background-color: cadetblue;
+        padding: 20px;
+        border: solid 10px;
+      }
+      #b1 > p {
+        margin: 0;
+      }
+      #b2 {
+        background-color: gold;
+        border: solid 20px black;
+        border-width: 20px 10px;
+        margin-left: 260px;
+      }
+      #b3 {
+        background-color: indianred;
+        border: solid 10px black;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="b1">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
+        sapien porttitor urna elementum lacinia. In id magna pulvinar, ultricies
+        lorem id, vehicula elit. Aliquam eu luctus nisl, vitae pellentesque
+        magna. Phasellus dolor metus, laoreet ac convallis sit amet, efficitur
+        sed dolor.
+      </p>
+    </div>
+    <div id="b2"></div>
+    <div id="b3"></div>
+
+    <!-- TODOs:
+9. Set the margins for the divs so that each box corner touches the other. (See the goal image)
+-->
+  </body>
+</html>
